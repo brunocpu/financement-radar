@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financement Radar PACA — Aide à l'instruction</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#f5f5f5;color:#1a1a1a;line-height:1.5}
+.header{background:#fff;border-bottom:3px solid #000091;padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:sticky;top:0;z-index:100}
+.header h1{font-size:18px;font-weight:700;color:#000091;letter-spacing:-0.3px}
+.header .subtitle{font-size:13px;color:#666}
+.disclaimer{background:#fff8e1;border-bottom:1px solid #f0c040;padding:5px 24px;font-size:11px;color:#5d4037;text-align:center}
+.disclaimer a{color:#000091}
+.search-bar{background:#fff;border-bottom:1px solid #ddd;padding:14px 24px;display:flex;gap:12px;align-items:center}
+.search-bar input{flex:1;padding:8px 14px 8px 36px;font-size:14px;border:2px solid #ddd;border-radius:4px;font-family:inherit;outline:none;transition:border-color .15s;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") 10px center no-repeat}
+.search-bar input:focus{border-color:#000091}
+.search-bar select{padding:8px 12px;font-size:13px;border:2px solid #ddd;border-radius:4px;font-family:inherit;background:#fff;cursor:pointer}
+.search-results{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #ddd;border-radius:0 0 6px 6px;max-height:400px;overflow-y:auto;box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:50;display:none}
+.search-result{padding:8px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:13px;border-bottom:1px solid #f0f0f0;transition:background .1s}
+.search-result:hover{background:#f0f0f5}
+.search-result .name{font-weight:600;color:#1a1a1a}
+.search-result .meta{color:#666;font-size:11px}
+.search-result .amount{color:#000091;font-weight:700;font-size:13px;white-space:nowrap}
+.search-wrapper{position:relative;flex:1}
+.main{max-width:1400px;margin:0 auto;padding:20px 24px}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.kpi{background:#fff;border:1px solid #ddd;border-radius:6px;padding:14px 18px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.kpi-label{font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.kpi-value{font-size:22px;font-weight:700;color:#000091;margin-top:2px}
+.kpi-sub{font-size:11px;color:#888;margin-top:2px}
+.panel{background:#fff;border:1px solid #ddd;border-radius:6px;padding:18px 22px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:16px}
+.panel h2{font-size:13px;font-weight:700;color:#000091;text-transform:uppercase;letter-spacing:.5px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #000091}
+.grid-2{display:grid;grid-template-columns:3fr 2fr;gap:16px}
+@media(max-width:900px){.grid-2{grid-template-columns:1fr}.kpi-row{grid-template-columns:repeat(2,1fr)}}
+.id-card{background:#fff;border:1px solid #ddd;border-left:4px solid #000091;border-radius:0 6px 6px 0;padding:16px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.id-card h2{font-size:20px;font-weight:700;color:#000091;margin:0 0 4px;border:none;padding:0;text-transform:none;letter-spacing:normal}
+.id-card .meta-line{font-size:13px;color:#666;margin-bottom:8px}
+.id-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px}
+.id-item{font-size:12px}
+.id-item .label{color:#888;text-transform:uppercase;font-size:10px;letter-spacing:.3px;font-weight:600}
+.id-item .value{color:#1a1a1a;font-weight:600;font-size:14px}
+.id-item .value.highlight{color:#000091}
+.id-item .value.warn{color:#c62828}
+.badge-row{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.badge{display:inline-block;padding:2px 8px;border-radius:3px;font-size:11px;font-weight:600;letter-spacing:.2px}
+.badge-pvd{background:#e3f2fd;color:#1565c0;border:1px solid #90caf9}
+.badge-acv{background:#fce4ec;color:#c62828;border:1px solid #ef9a9a}
+.badge-va{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7}
+.badge-ti{background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8}
+.badge-fs{background:#fff3e0;color:#e65100;border:1px solid #ffcc80}
+.badge-cite{background:#e0f2f1;color:#00695c;border:1px solid #80cbc4}
+.badge-carac{background:#f5f5f5;color:#555;border:1px solid #ccc}
+.badge-none{background:#f5f5f5;color:#999;border:1px solid #e0e0e0}
+.section-label{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.3px;font-weight:600;margin-top:10px;margin-bottom:4px}
+.fin-row{display:flex;gap:16px;margin-top:4px;flex-wrap:wrap}
+.fin-item{font-size:11px;color:#555}
+.fin-item strong{color:#000091}
+.tabs{display:flex;gap:0;border-bottom:2px solid #e0e0e0;margin-bottom:16px}
+.tab{padding:8px 18px;font-size:13px;font-weight:600;color:#666;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:all .15s;background:none;border-top:none;border-left:none;border-right:none;font-family:inherit}
+.tab:hover{color:#000091;background:#f8f8ff}
+.tab.active{color:#000091;border-bottom-color:#000091}
+.data-table{width:100%;border-collapse:collapse;font-size:12px}
+.data-table th{text-align:left;padding:8px 10px;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:.3px;border-bottom:2px solid #000091;font-weight:600}
+.data-table td{padding:7px 10px;border-bottom:1px solid #f0f0f0}
+.data-table tr:hover{background:#f8f8ff}
+.data-table .num{text-align:right;font-variant-numeric:tabular-nums}
+.data-table .amount{color:#000091;font-weight:600}
+.data-table-projets{table-layout:fixed;width:100%}
+.data-table-projets th:nth-child(1){width:50px}
+.data-table-projets th:nth-child(2){width:100px}
+.data-table-projets th:nth-child(4){width:80px}
+.data-table-projets th:nth-child(5){width:90px}
+.data-table-projets th:nth-child(6){width:60px}
+.td-intitule{white-space:normal;word-break:break-word;overflow-wrap:break-word;line-height:1.4}
+.data-table-porteur{table-layout:fixed;width:100%}
+.data-table-porteur th:nth-child(1){width:50px}
+.data-table-porteur th:nth-child(2){width:100px}
+.data-table-porteur th:nth-child(3){width:100px}
+.data-table-porteur th:nth-child(5){width:90px}
+
+.top-item{display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid #f5f5f5;font-size:12px}
+.top-item .rank{color:#999;width:20px}
+.top-item .name{flex:1;color:#333;cursor:pointer}
+.top-item .name:hover{color:#000091;text-decoration:underline}
+.top-item .val{color:#000091;font-weight:700;font-size:13px}
+.callout{background:#f5f5fe;border-left:4px solid #000091;border-radius:0 4px 4px 0;padding:12px 18px;font-size:13px;color:#333;margin:12px 0}
+.pitch{background:#fff;border:1px solid #ddd;border-radius:6px;padding:20px 24px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.pitch h3{color:#000091;font-size:15px;margin-bottom:6px}
+.pitch p{color:#333;font-size:13px;line-height:1.6;margin-bottom:6px}
+.pitch .hl{color:#e1000f;font-weight:600}
+.btn{display:inline-block;padding:6px 16px;border:1px solid #000091;border-radius:4px;background:#fff;color:#000091;font-size:12px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .15s}
+.btn:hover{background:#000091;color:#fff}
+.back-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;font-size:12px;color:#000091;font-weight:600;cursor:pointer;border:1px solid #ddd;border-radius:4px;background:#fff;font-family:inherit;margin-bottom:12px}
+.back-btn:hover{background:#f0f0f5}
+.footer{text-align:center;font-size:11px;color:#999;padding:16px 0;border-top:1px solid #e0e0e0;margin-top:24px}
+.chart-container{position:relative;height:300px;margin:8px 0}
+.hidden{display:none!important}
+
+.badge-benef{display:inline-block;padding:1px 5px;border-radius:2px;font-size:9px;font-weight:700;letter-spacing:.2px;margin-right:4px;vertical-align:middle}
+.badge-epci{background:#e8eaf6;color:#283593;border:1px solid #9fa8da}
+.badge-dep{background:#fce4ec;color:#880e4f;border:1px solid #f48fb1}
+.badge-region{background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8}
+.badge-autre{background:#fff3e0;color:#e65100;border:1px solid #ffcc80}
+
+.search-toggle{display:flex;gap:0;margin-right:8px}
+.search-toggle button{padding:6px 12px;font-size:12px;font-weight:600;border:2px solid #ddd;background:#fff;color:#666;cursor:pointer;font-family:inherit;transition:all .15s}
+.search-toggle button:first-child{border-radius:4px 0 0 4px}
+.search-toggle button:last-child{border-radius:0 4px 4px 0;border-left:0}
+.search-toggle button.active{background:#000091;color:#fff;border-color:#000091}
+.filter-input{padding:6px 10px;font-size:12px;border:1px solid #ddd;border-radius:4px;font-family:inherit;width:250px;outline:none}
+.filter-input:focus{border-color:#000091}
+.porteur-card{background:#fff;border:1px solid #ddd;border-left:4px solid #795548;border-radius:0 6px 6px 0;padding:16px 24px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.porteur-card h2{font-size:20px;font-weight:700;color:#795548;margin:0 0 4px;border:none;padding:0;text-transform:none;letter-spacing:normal}
+.porteur-card .meta-line{font-size:13px;color:#666;margin-bottom:8px}
+.commune-link{color:#000091;cursor:pointer;text-decoration:none}
+.commune-link:hover{text-decoration:underline}
+
+
+.benef-name{font-size:10px;color:#888;display:block;margin-top:1px}
+
+</style>
+</head>
+<body>
+<header class="header"><div><h1>🏛️ Financement Radar PACA</h1><span class="subtitle" id="headerStats">Chargement…</span></div></header>
+<div class="disclaimer">Preuve de concept — Réutilisation de données ouvertes <a href="https://www.data.gouv.fr">data.gouv.fr</a> — Ceci n'est pas un site officiel de l'État</div>
+<div class="search-bar">
+  <div class="search-toggle" id="searchToggle">
+    <button class="active" data-mode="commune">🏘️ Commune</button>
+    <button data-mode="porteur">🏢 Porteur</button>
+  </div>
+  <div class="search-wrapper">
+    <input type="text" id="searchInput" placeholder="Code INSEE ou nom de commune…" autocomplete="off"/>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <select id="depFilter"><option value="">Tous les départements</option></select>
+</div>
+
+<div class="main" id="pageAccueil">
+  <div class="pitch"><h3>🎯 Pourquoi cet outil ?</h3><p>Chaque dotation (DETR, DSIL, Fonds Vert, ADEME, DRAC…) est instruite <span class="hl">en silo</span>. Quand un dossier arrive, l'instructeur n'a aucune visibilité sur les financements déjà obtenus.</p><h3>💡 Comment ça marche ?</h3><p>Tapez un <strong>code INSEE</strong> ou un <strong>nom de commune</strong> → carte d'identité complète (population, revenus, zonages), historique 2018-2024, montants par dispositif, positionnement départemental. En 1 seconde.</p></div>
+  <div class="kpi-row" id="kpiRow"></div>
+  <div class="grid-2"><div class="panel"><h2>Évolution des dotations</h2><div class="chart-container"><canvas id="chartAccueil"></canvas></div></div><div class="panel"><h2 id="topTitle">Top 15 communes (PACA)</h2><div id="topList"></div></div></div>
+  <div class="callout">🔍 <strong>Recherchez une commune</strong> ci-dessus pour afficher sa fiche complète.</div>
+</div>
+
+<div class="main hidden" id="pageFiche">
+  <button class="back-btn" onclick="showAccueil()">← Retour</button>
+  <div class="id-card" id="ficheIdCard"></div>
+  <div class="kpi-row" id="ficheKpi"></div>
+  <div class="tabs" id="ficheTabs"><button class="tab active" data-tab="synthese">📊 Synthèse</button><button class="tab" data-tab="projets">📝 Projets</button><button class="tab" data-tab="benchmark">📈 Positionnement</button></div>
+  <div id="tabSynthese" class="panel"><h2>Subventions par année et dispositif</h2><div class="chart-container"><canvas id="chartFiche"></canvas></div><div style="margin-top:12px" id="ficheTable"></div></div>
+  <div id="tabProjets" class="panel hidden"><h2>Financements localisés sur la commune</h2><div style="margin-bottom:8px"><input type="text" class="filter-input" id="projetsFilter" placeholder="Filtrer par porteur, intitulé, dispositif…" oninput="filterProjets()"/></div><div class="callout" style="margin-bottom:10px;padding:8px 14px;font-size:11px">ℹ️ Inclut les projets portés par la commune <strong>et</strong> ceux localisés sur son territoire mais portés par d'autres (EPCI, département…). Le badge coloré identifie le type de porteur.</div><div id="projetsTable"></div><div style="margin-top:8px"><button class="btn" onclick="exportProjets()">⬇ Exporter CSV</button></div></div>
+  <div id="tabBenchmark" class="panel hidden"><h2>Positionnement départemental</h2><div class="chart-container"><canvas id="chartBench"></canvas></div><div class="callout" style="margin-top:12px">ℹ️ Comparaison des subventions cumulées vs médiane départementale.</div></div>
+</div>
+
+
+<div class="main hidden" id="pagePorteur">
+  <button class="back-btn" onclick="showAccueil()">← Retour</button>
+  <div class="porteur-card" id="porteurCard"></div>
+  <div class="kpi-row" id="porteurKpi"></div>
+  <div class="grid-2">
+    <div class="panel"><h2>Communes concernées</h2><div id="porteurCommunes"></div></div>
+    <div class="panel"><h2>Par dispositif</h2><div id="porteurDisp"></div></div>
+  </div>
+  <div class="panel"><h2>Projets</h2>
+    <div style="margin-bottom:8px"><input type="text" class="filter-input" id="porteurFilter" placeholder="Filtrer les projets…"/></div>
+    <div id="porteurProjets"></div>
+  </div>
+</div>
+
+<div class="footer">Source : DGCL + Fonds Vert + ADEME + ANCT + OFGL + Filosofi — data.gouv.fr — Licence Ouverte 2.0 — Phase 2</div>
+
+<script src="data.js"></script>
+<script>
+const NBSP='\u202f';
+function fmt(n){if(n==null)return'—';if(Math.abs(n)>=1e9)return(n/1e9).toFixed(1).replace('.',',')+NBSP+'Md€';if(Math.abs(n)>=1e6)return(n/1e6).toFixed(1).replace('.',',')+NBSP+'M€';return Math.round(n).toLocaleString('fr-FR')+NBSP+'€';}
+function fmtN(n){if(n==null)return'—';return Math.round(n).toLocaleString('fr-FR');}
+function fmtPct(n){if(n==null||n===0)return'—';return(n*100).toFixed(1).replace('.',',')+NBSP+'%';}
+function fmtP(n){if(n==null)return'—';return n.toFixed(1).replace('.',',')+NBSP+'%';}
+function fmtHab(n){if(n==null)return'—';return Math.round(n).toLocaleString('fr-FR')+NBSP+'€/hab';}
+function fmtRev(n){if(n==null)return'—';return Math.round(n).toLocaleString('fr-FR')+NBSP+'€/an';}
+const COLORS={"DETR":"#2f5496","DSIL":"#2e7d32","DPV":"#e65100","DSID RT":"#6a1b9a","DSIL EXCEPTIONNELLE":"#ad1457","DSIL RT":"#00838f","FONDS VERT":"#00897b","ADEME":"#795548"};
+const DISPS=[...new Set(DISP_STATS.map(d=>d.d))].sort((a,b)=>{const ord={"DETR":0,"DSIL":1,"DPV":2,"FONDS VERT":3,"ADEME":4};return(ord[a]??9)-(ord[b]??9);});
+const BADGE_CLASS={"PVD":"badge-pvd","ACV":"badge-acv","VA":"badge-va","TI":"badge-ti","FS":"badge-fs","Cité édu.":"badge-cite"};
+const IDX=Object.fromEntries(COMMUNES.map(c=>[c.code,c]));
+let currentCode=null,chartAccueil=null,chartFiche=null,chartBench=null;
+
+function init(){
+  document.getElementById('headerStats').textContent=fmtN(GLOBAL_STATS.nb_projets)+' projets · '+fmt(GLOBAL_STATS.total_subventions)+' · '+fmtN(GLOBAL_STATS.nb_communes)+' communes · '+GLOBAL_STATS.annee_min+'-'+GLOBAL_STATS.annee_max;
+  const deps=[...new Set(COMMUNES.map(c=>c.dep))].sort();
+  const sel=document.getElementById('depFilter');
+  deps.forEach(d=>{const o=document.createElement('option');o.value=d;o.textContent=d;sel.appendChild(o);});
+  renderKpis();renderAccueilChart();renderTop15();initSearch();initTabs();
+}
+function renderKpis(){const s=GLOBAL_STATS;document.getElementById('kpiRow').innerHTML=kpi('Projets financés',fmtN(s.nb_projets))+kpi('Communes',fmtN(s.nb_communes))+kpi('Subventions',fmt(s.total_subventions))+kpi('Départements',s.nb_departements);}
+function kpi(label,value,sub){return`<div class="kpi"><div class="kpi-label">${label}</div><div class="kpi-value">${value}</div>${sub?'<div class="kpi-sub">'+sub+'</div>':''}</div>`;}
+
+function renderAccueilChart(){
+  const years=[...new Set(DISP_STATS.map(d=>d.y))].sort();
+  const datasets=DISPS.filter(d=>DISP_STATS.some(s=>s.d===d)).map(disp=>({label:disp,data:years.map(y=>{const r=DISP_STATS.find(s=>s.d===disp&&s.y===y);return r?r.s:0;}),backgroundColor:COLORS[disp]||'#999'}));
+  const ctx=document.getElementById('chartAccueil').getContext('2d');
+  if(chartAccueil)chartAccueil.destroy();
+  chartAccueil=new Chart(ctx,{type:'bar',data:{labels:years,datasets},options:{responsive:true,maintainAspectRatio:false,scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>fmt(v)}}},plugins:{legend:{position:'top',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+fmt(ctx.raw)}}}}});
+}
+function renderTop15(){
+  const dep=document.getElementById('depFilter').value;let list=COMMUNES;if(dep)list=list.filter(c=>c.dep===dep);
+  document.getElementById('topTitle').textContent=dep?`Top 15 communes (dép. ${dep})`:'Top 15 communes (PACA)';
+  document.getElementById('topList').innerHTML=list.slice(0,15).map((c,i)=>`<div class="top-item"><span class="rank">${i+1}.</span><span class="name" onclick="showFiche('${c.code}')">${c.nom}</span><span class="val">${fmt(c.subv)}</span></div>`).join('');
+}
+
+
+let searchMode = 'commune';
+
+function initSearch(){
+  const input=document.getElementById('searchInput'),results=document.getElementById('searchResults');
+
+  // Toggle commune/porteur
+  document.querySelectorAll('#searchToggle button').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('#searchToggle button').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      searchMode=btn.dataset.mode;
+      input.placeholder=searchMode==='commune'?'Code INSEE ou nom de commune…':'Nom du porteur (EPCI, commune, entreprise…)';
+      input.value='';results.style.display='none';
+    });
+  });
+
+  input.addEventListener('input',()=>{
+    if(searchMode==='commune') searchCommune(input,results);
+    else searchPorteur(input,results);
+  });
+  input.addEventListener('keydown',e=>{if(e.key==='Escape')results.style.display='none';});
+  document.addEventListener('click',e=>{if(!input.contains(e.target)&&!results.contains(e.target))results.style.display='none';});
+  document.getElementById('depFilter').addEventListener('change',()=>{renderTop15();});
+}
+
+function searchCommune(input,results){
+  const q=input.value.trim().toLowerCase();results.innerHTML='';
+  if(q.length<2){results.style.display='none';return;}
+  const dep=document.getElementById('depFilter').value;
+  let matches=COMMUNES.filter(c=>{if(dep&&c.dep!==dep)return false;return c.code.includes(q)||c.nom.toLowerCase().includes(q);}).slice(0,20);
+  if(!matches.length){results.innerHTML='<div style="padding:10px;font-size:12px;color:#666">Aucun résultat</div>';results.style.display='block';return;}
+  matches.forEach(c=>{
+    const div=document.createElement('div');div.className='search-result';
+    const zb=(c.zonages||[]).map(z=>'<span class="badge '+(BADGE_CLASS[z]||'badge-none')+'">'+z+'</span>').join('');
+    const cb=(c.carac||[]).map(x=>'<span class="badge badge-carac">'+x+'</span>').join('');
+    const rev=c.rev_med?'<span style="font-size:10px;color:#888;margin-left:4px">'+fmtRev(c.rev_med)+'</span>':'';
+    div.innerHTML=`<div><span class="name">${c.nom}</span>${rev}${(zb+cb)?'<div style="margin-top:2px">'+zb+cb+'</div>':''}<br><span class="meta">${c.code} · Dép. ${c.dep}${c.pop?' · '+fmtN(c.pop)+' hab':''} · ${c.projets} projets</span></div><span class="amount">${fmt(c.subv)}</span>`;
+    div.addEventListener('click',()=>{results.style.display='none';input.value=c.nom;showFiche(c.code);});
+    results.appendChild(div);
+  });
+  results.style.display='block';
+}
+
+function searchPorteur(input,results){
+  const q=input.value.trim().toLowerCase();results.innerHTML='';
+  if(q.length<2){results.style.display='none';return;}
+  const BTYPE_LABELS={'commune':'🏘️','epci':'🏛️','departement':'🗺️','region':'🌍','autre':'🏢'};
+  let matches=PORTEURS.filter(p=>p.nom.toLowerCase().includes(q)).slice(0,20);
+  if(!matches.length){results.innerHTML='<div style="padding:10px;font-size:12px;color:#666">Aucun porteur trouvé</div>';results.style.display='block';return;}
+  matches.forEach(p=>{
+    const div=document.createElement('div');div.className='search-result';
+    const icon=BTYPE_LABELS[p.type]||'🏢';
+    const nCom=p.communes?p.communes.length:0;
+    div.innerHTML=`<div><span class="name">${icon} ${p.nom}</span><br><span class="meta">${p.type} · ${p.n} projets · ${nCom} communes · ${p.an_min}-${p.an_max}</span></div><span class="amount">${fmt(p.subv)}</span>`;
+    div.addEventListener('click',()=>{results.style.display='none';input.value=p.nom;showPorteur(p.nom);});
+    results.appendChild(div);
+  });
+  results.style.display='block';
+}
+
+function showPorteur(nom){
+  const p=PORTEURS.find(x=>x.nom===nom);
+  if(!p)return;
+  document.getElementById('pageAccueil').classList.add('hidden');
+  document.getElementById('pageFiche').classList.add('hidden');
+  document.getElementById('pagePorteur').classList.remove('hidden');
+
+  const BTYPE_LABELS={'commune':'Commune','epci':'EPCI / Intercommunalité','departement':'Département','region':'Région','autre':'Autre (entreprise, asso, EP…)'};
+
+  // Card
+  let h=`<h2>${p.nom}</h2>`;
+  h+=`<div class="meta-line">${BTYPE_LABELS[p.type]||p.type} · ${p.n} projets · ${p.an_min}-${p.an_max}</div>`;
+  document.getElementById('porteurCard').innerHTML=h;
+
+  // KPIs
+  document.getElementById('porteurKpi').innerHTML=
+    kpi('Projets',fmtN(p.n))+kpi('Subventions',fmt(p.subv))+
+    kpi('Communes',p.communes?p.communes.length:0)+
+    kpi('Dispositifs',p.dispositifs?p.dispositifs.length:0);
+
+  // Communes
+  let ch='';
+  if(p.communes&&p.communes.length>0){
+    ch='<table class="data-table"><thead><tr><th>Commune</th><th>Code</th><th class="num">Projets</th><th class="num">Subventions</th></tr></thead><tbody>';
+    p.communes.forEach(c=>{
+      ch+=`<tr><td><span class="commune-link" onclick="showFiche('${c.code}')">${c.nom||c.code}</span></td><td>${c.code}</td><td class="num">${c.n}</td><td class="num amount">${fmt(c.s)}</td></tr>`;
+    });
+    ch+='</tbody></table>';
+  }
+  document.getElementById('porteurCommunes').innerHTML=ch;
+
+  // Dispositifs
+  let dh='';
+  if(p.dispositifs&&p.dispositifs.length>0){
+    dh='<table class="data-table"><thead><tr><th>Dispositif</th><th class="num">Projets</th><th class="num">Subventions</th></tr></thead><tbody>';
+    p.dispositifs.forEach(d=>{
+      dh+=`<tr><td>${d.d}</td><td class="num">${d.n}</td><td class="num amount">${fmt(d.s)}</td></tr>`;
+    });
+    dh+='</tbody></table>';
+  }
+  document.getElementById('porteurDisp').innerHTML=dh;
+
+  // Projets
+  renderPorteurProjets(p);
+
+  // Filtre
+  document.getElementById('porteurFilter').value='';
+  document.getElementById('porteurFilter').oninput=()=>renderPorteurProjets(p);
+}
+
+function renderPorteurProjets(p){
+  const q=(document.getElementById('porteurFilter').value||'').toLowerCase();
+  let projets=p.projets||[];
+  if(q.length>=2) projets=projets.filter(pr=>pr.t.toLowerCase().includes(q)||pr.d.toLowerCase().includes(q)||(pr.c||'').includes(q));
+  let ph='<table class="data-table data-table-porteur"><thead><tr><th>Année</th><th>Dispositif</th><th>Commune</th><th>Intitulé</th><th class="num">Subvention</th></tr></thead><tbody>';
+  projets.forEach(pr=>{
+    const nomCom=IDX[pr.c]?IDX[pr.c].nom:pr.c;
+    ph+=`<tr><td>${pr.y}</td><td>${pr.d}</td><td><span class="commune-link" onclick="showFiche('${pr.c}')">${nomCom}</span></td><td class="td-intitule"><div>${pr.t}</div></td><td class="num amount">${fmt(pr.s)}</td></tr>`;
+  });
+  ph+=`</tbody></table><div style="font-size:11px;color:#666;margin-top:6px">${projets.length} projet(s)</div>`;
+  document.getElementById('porteurProjets').innerHTML=ph;
+}
+
+// ── Filtre local dans l'onglet Projets (fiche commune) ──
+function filterProjets(){
+  if(!currentCode)return;
+  const q=(document.getElementById('projetsFilter').value||'').toLowerCase();
+  const data=PROJETS[currentCode]||[];
+  const filtered=q.length>=2?data.filter(p=>(p.t||'').toLowerCase().includes(q)||(p.d||'').toLowerCase().includes(q)||(p.bn||'').toLowerCase().includes(q)||(p.b||'').includes(q)):data;
+  const BTYPE={'epci':['EPCI','badge-epci'],'departement':['Dép.','badge-dep'],'region':['Région','badge-region'],'autre':['Autre','badge-autre']};
+  let html='<table class="data-table data-table-projets"><thead><tr><th>Année</th><th>Dispositif</th><th>Porteur / Intitulé</th><th class="num">Coût HT</th><th class="num">Subvention</th><th class="num">Taux</th></tr></thead><tbody>';
+  filtered.forEach(p=>{
+    let badge='';if(p.b&&BTYPE[p.b]){badge=`<span class="badge-benef ${BTYPE[p.b][1]}">${BTYPE[p.b][0]}</span>`;}
+    let benef=p.bn?`<span class="benef-name">${p.bn}</span>`:'';
+    html+=`<tr><td>${p.y}</td><td>${p.d}</td><td class="td-intitule"><div>${badge}${p.t}${benef}</div></td><td class="num">${p.c?fmt(p.c):'—'}</td><td class="num amount">${fmt(p.s)}</td><td class="num">${fmtPct(p.r)}</td></tr>`;
+  });
+  const nComm=filtered.filter(p=>!p.b).length;const nAutre=filtered.filter(p=>p.b).length;
+  let legend=`${filtered.length} projet(s)`;if(nAutre>0) legend+=` dont ${nComm} commune, ${nAutre} autres porteurs`;
+  if(q.length>=2) legend+=` (filtré sur "${q}")`;
+  html+=`</tbody></table><div style="font-size:11px;color:#666;margin-top:6px">${legend}</div>`;
+  document.getElementById('projetsTable').innerHTML=html;
+}
+
+
+function showAccueil(){document.getElementById('pageAccueil').classList.remove('hidden');document.getElementById('pageFiche').classList.add('hidden');document.getElementById('pagePorteur').classList.add('hidden');currentCode=null;document.getElementById('searchInput').value='';}
+
+function showFiche(code){
+  const c=IDX[code];if(!c)return;currentCode=code;
+  document.getElementById('pageAccueil').classList.add('hidden');
+  document.getElementById('pageFiche').classList.remove('hidden');
+  document.getElementById('pagePorteur').classList.add('hidden');
+
+  // ── Carte d'identité ──
+  let h=`<h2>${c.nom}</h2><div class="meta-line">Code INSEE ${c.code} · Département ${c.dep}`;
+  if(c.region) h+=` · ${c.region}`;
+  h+=` · Données ${c.an_min}-${c.an_max}</div>`;
+
+  // Grille principale
+  h+='<div class="id-grid">';
+  if(c.pop) h+=`<div class="id-item"><div class="label">Population</div><div class="value">${fmtN(c.pop)} hab.</div></div>`;
+  if(c.strate) h+=`<div class="id-item"><div class="label">Strate</div><div class="value">${c.strate}</div></div>`;
+  if(c.rev_med) h+=`<div class="id-item"><div class="label">Revenu médian</div><div class="value${c.rev_med<18000?' warn':''}">${fmtRev(c.rev_med)}</div></div>`;
+  if(c.pop&&c.subv) h+=`<div class="id-item"><div class="label">Subventions / hab. (cumulé)</div><div class="value highlight">${fmtHab(c.subv/c.pop)}</div></div>`;
+  if(c.menages) h+=`<div class="id-item"><div class="label">Ménages fiscaux</div><div class="value">${fmtN(c.menages)}</div></div>`;
+  if(c.gini) h+=`<div class="id-item"><div class="label">Indice de Gini</div><div class="value">${c.gini.toFixed(2).replace('.',',')}</div></div>`;
+  h+='</div>';
+
+  // Profil socio (Filosofi)
+  const socio=[];
+  if(c.pct_act) socio.push('Activité : <strong>'+fmtP(c.pct_act)+'</strong>');
+  if(c.pct_ret) socio.push('Retraités : <strong>'+fmtP(c.pct_ret)+'</strong>');
+  if(c.pct_prest) socio.push('Prestations sociales : <strong>'+fmtP(c.pct_prest)+'</strong>');
+  if(socio.length>0){
+    h+='<div class="section-label">Profil socio-économique (Filosofi 2021)</div><div class="fin-row">';
+    socio.forEach(s=>h+=`<span class="fin-item">${s}</span>`);
+    h+='</div>';
+  }
+
+  // Caractéristiques + zonages
+  const allBadges=[];
+  if(c.carac) c.carac.forEach(x=>allBadges.push('<span class="badge badge-carac">'+x+'</span>'));
+  if(c.zonages) c.zonages.forEach(z=>allBadges.push('<span class="badge '+(BADGE_CLASS[z]||'badge-none')+'">'+z+'</span>'));
+  if(allBadges.length>0){
+    h+='<div class="section-label">Caractéristiques & zonages</div><div class="badge-row">'+allBadges.join('')+'</div>';
+  }
+
+  // Finances OFGL
+  const fins=[];
+  if(c.epargne!=null) fins.push('Épargne brute : <strong>'+fmt(c.epargne)+'</strong>');
+  if(c.dette!=null) fins.push('Encours dette : <strong>'+fmt(c.dette)+'</strong>');
+  if(c.dep_equip!=null) fins.push('Dép. équipement : <strong>'+fmt(c.dep_equip)+'</strong>');
+  if(c.rec_fonct!=null) fins.push('Rec. fonctionnement : <strong>'+fmt(c.rec_fonct)+'</strong>');
+  if(fins.length>0){
+    h+='<div class="section-label" style="margin-top:10px">Finances communales (OFGL 2024)</div><div class="fin-row">';
+    fins.forEach(f=>h+=`<span class="fin-item">${f}</span>`);
+    h+='</div>';
+  }
+
+  document.getElementById('ficheIdCard').innerHTML=h;
+
+  // KPIs
+  const eurHab=c.pop?fmtHab(c.subv/c.pop):null;
+  document.getElementById('ficheKpi').innerHTML=
+    kpi('Projets',fmtN(c.projets))+
+    kpi('Subventions',fmt(c.subv),eurHab?eurHab+' sur '+(c.an_max-c.an_min+1)+' ans':null)+
+    kpi('Coût total HT',fmt(c.cout))+
+    kpi('Revenu médian',c.rev_med?fmtRev(c.rev_med):'—',c.gini?'Gini '+c.gini.toFixed(2).replace('.',','):null);
+
+  document.querySelectorAll('#ficheTabs .tab').forEach((t,i)=>t.classList.toggle('active',i===0));
+  document.getElementById('tabSynthese').classList.remove('hidden');
+  document.getElementById('tabProjets').classList.add('hidden');
+  document.getElementById('tabBenchmark').classList.add('hidden');
+  renderFicheChart(code);renderFicheTable(code);renderProjetsTable(code);renderBenchmark(code);
+}
+
+function initTabs(){document.querySelectorAll('#ficheTabs .tab').forEach(tab=>{tab.addEventListener('click',()=>{document.querySelectorAll('#ficheTabs .tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');['tabSynthese','tabProjets','tabBenchmark'].forEach(id=>document.getElementById(id).classList.add('hidden'));document.getElementById('tab'+tab.dataset.tab.charAt(0).toUpperCase()+tab.dataset.tab.slice(1)).classList.remove('hidden');});});}
+
+function renderFicheChart(code){const data=DETAIL[code]||[];const years=[...new Set(data.map(d=>d.y))].sort();const disps=[...new Set(data.map(d=>d.d))];const datasets=disps.map(disp=>({label:disp,data:years.map(y=>{const r=data.find(d=>d.d===disp&&d.y===y);return r?r.s:0;}),backgroundColor:COLORS[disp]||'#999'}));const ctx=document.getElementById('chartFiche').getContext('2d');if(chartFiche)chartFiche.destroy();chartFiche=new Chart(ctx,{type:'bar',data:{labels:years,datasets},options:{responsive:true,maintainAspectRatio:false,scales:{x:{stacked:true},y:{stacked:true,ticks:{callback:v=>fmt(v)}}},plugins:{legend:{position:'top',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+fmt(ctx.raw)}}}}});}
+
+function renderFicheTable(code){const data=DETAIL[code]||[];const years=[...new Set(data.map(d=>d.y))].sort();const disps=[...new Set(data.map(d=>d.d))];let html='<table class="data-table"><thead><tr><th>Année</th>';disps.forEach(d=>html+=`<th class="num">${d}</th>`);html+='<th class="num">TOTAL</th></tr></thead><tbody>';years.forEach(y=>{html+=`<tr><td>${y}</td>`;let total=0;disps.forEach(d=>{const r=data.find(x=>x.d===d&&x.y===y);const v=r?r.s:0;total+=v;html+=`<td class="num amount">${v?fmt(v):'—'}</td>`;});html+=`<td class="num amount" style="font-weight:700">${fmt(total)}</td></tr>`;});html+='</tbody></table>';document.getElementById('ficheTable').innerHTML=html;}
+
+function renderProjetsTable(code){
+  document.getElementById('projetsFilter').value='';
+  filterProjets();
+}
+
+function renderBenchmark(code){const c=IDX[code];if(!c)return;const detail=DETAIL[code]||[];const bench=BENCHMARK[c.dep]||{};const disps=[...new Set(detail.map(d=>d.d))];const communeVals=disps.map(d=>detail.filter(x=>x.d===d).reduce((s,x)=>s+x.s,0));const medianeVals=disps.map(d=>bench[d]?bench[d].med*7:0);const ctx=document.getElementById('chartBench').getContext('2d');if(chartBench)chartBench.destroy();chartBench=new Chart(ctx,{type:'bar',data:{labels:disps,datasets:[{label:c.nom,data:communeVals,backgroundColor:'#000091'},{label:'Médiane dép. '+c.dep,data:medianeVals,backgroundColor:'#bbb'}]},options:{responsive:true,maintainAspectRatio:false,scales:{y:{ticks:{callback:v=>fmt(v)}}},plugins:{legend:{position:'top',labels:{boxWidth:12,font:{size:11}}},tooltip:{callbacks:{label:ctx=>ctx.dataset.label+': '+fmt(ctx.raw)}}}}});}
+
+function exportProjets(){if(!currentCode)return;const data=PROJETS[currentCode]||[];let csv='\ufeff"Année";"Dispositif";"Type porteur";"Porteur";"Intitulé";"Coût HT";"Subvention";"Taux"\n';data.forEach(p=>{csv+=`${p.y};"${p.d}";"${p.b||'commune'}";"${(p.bn||'').replace(/"/g,'""')}";"${p.t.replace(/"/g,'""')}";${p.c};${p.s};${(p.r*100).toFixed(1).replace('.',',')}\n`;});const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`financement_radar_${currentCode}.csv`;a.click();}
+
+init();
+</script>
+</body>
+</html>

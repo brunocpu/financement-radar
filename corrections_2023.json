@@ -1,0 +1,793 @@
+{
+  "14325274": {
+    "code_commune": "04088",
+    "commune": "Forcalquier",
+    "source": "benef:\"CC PAYS DE FORCALQUIER\"",
+    "montant": 36848.02,
+    "dept": "04"
+  },
+  "12757466": {
+    "code_commune": "04039",
+    "commune": "Castellane",
+    "source": "benef:\"CC ALPES PROVENCE VERDON\"",
+    "montant": 28062.81,
+    "dept": "04"
+  },
+  "14500893": {
+    "code_commune": "04070",
+    "commune": "Digne-les-Bains",
+    "source": "dept_fallback:04",
+    "montant": 41887.77,
+    "dept": "04"
+  },
+  "13025712": {
+    "code_commune": "04112",
+    "commune": "Manosque",
+    "source": "benef:\"CA PROVENCE-ALPES-AGGLO\"",
+    "montant": 31046.23,
+    "dept": "04"
+  },
+  "15107445": {
+    "code_commune": "04112",
+    "commune": "Manosque",
+    "source": "benef:\"CA DURANCE LUBERON VERDON\"",
+    "montant": 28950.4,
+    "dept": "04"
+  },
+  "13187646": {
+    "code_commune": "04209",
+    "commune": "Sisteron",
+    "source": "benef:\"CC DU SISTERONAIS\"",
+    "montant": 32757.48,
+    "dept": "04"
+  },
+  "12840928": {
+    "code_commune": "04019",
+    "commune": "Barcelonnette",
+    "source": "benef:\"CC VALLEE DE L'UBAYE\"",
+    "montant": 30688.7,
+    "dept": "04"
+  },
+  "11502985": {
+    "code_commune": "04068",
+    "commune": "Demandolx",
+    "source": "benef:\"DEMANDOLX\"",
+    "montant": 126943.31,
+    "dept": "04"
+  },
+  "12203819": {
+    "code_commune": "04018",
+    "commune": "Banon",
+    "source": "benef:\"BANON\"",
+    "montant": 20800.0,
+    "dept": "04"
+  },
+  "11412371": {
+    "code_commune": "04070",
+    "commune": "Digne-les-Bains",
+    "source": "dept_fallback:04",
+    "montant": 525000.0,
+    "dept": "04"
+  },
+  "11553276": {
+    "code_commune": "04094",
+    "commune": "Le Fugeret",
+    "source": "titre:\"Argenton\"",
+    "montant": 14000.0,
+    "dept": "04"
+  },
+  "12746110": {
+    "code_commune": "04068",
+    "commune": "Demandolx",
+    "source": "benef:\"DEMANDOLX\"",
+    "montant": 47920.0,
+    "dept": "04"
+  },
+  "11589240": {
+    "code_commune": "04070",
+    "commune": "Digne-les-Bains",
+    "source": "dept_fallback:04",
+    "montant": 56000.0,
+    "dept": "04"
+  },
+  "13259301": {
+    "code_commune": "04112",
+    "commune": "Manosque",
+    "source": "benef:\"HABITATIONS DE HAUTE-PROVENCE\"",
+    "montant": 81145.6,
+    "dept": "04"
+  },
+  "11577167": {
+    "code_commune": "04039",
+    "commune": "Castellane",
+    "source": "benef:\"SM PNR VERDON\"",
+    "montant": 9428.0,
+    "dept": "04"
+  },
+  "11323109": {
+    "code_commune": "04019",
+    "commune": "Barcelonnette",
+    "source": "benef:\"CC VALLEE DE L'UBAYE\"",
+    "montant": 8464.92,
+    "dept": "04"
+  },
+  "13631927": {
+    "code_commune": "84031",
+    "commune": "Cavaillon",
+    "source": "benef:\"SM AMENAGEMENT VALLEE DE LA DURANCE\"",
+    "montant": 29886.31,
+    "dept": "04"
+  },
+  "11317771": {
+    "code_commune": "04088",
+    "commune": "Forcalquier",
+    "source": "benef:\"CC PAYS DE FORCALQUIER\"",
+    "montant": 69534.63,
+    "dept": "04"
+  },
+  "11323035": {
+    "code_commune": "04008",
+    "commune": "Annot",
+    "source": "benef:\"SIERT ANNOT ENTREVAUX\"",
+    "montant": 329996.5,
+    "dept": "04"
+  },
+  "11395310": {
+    "code_commune": "04209",
+    "commune": "Sisteron",
+    "source": "benef:\"CC DU SISTERONAIS\"",
+    "montant": 128525.84,
+    "dept": "04"
+  },
+  "12111434": {
+    "code_commune": "05065",
+    "commune": "Guillestre",
+    "source": "titre:\"Guillestre\"",
+    "montant": 325000.0,
+    "dept": "05"
+  },
+  "11953007": {
+    "code_commune": "05071",
+    "commune": "La Chapelle-en-Valgaudémar",
+    "source": "titre:\"Gioberney\"",
+    "montant": 137782.0,
+    "dept": "05"
+  },
+  "11365653": {
+    "code_commune": "05124",
+    "commune": "Rousset",
+    "source": "titre:\"Rousset\"",
+    "montant": 19048.2,
+    "dept": "05"
+  },
+  "11807830": {
+    "code_commune": "05161",
+    "commune": "Savines-le-Lac",
+    "source": "titre:\"Savines\"",
+    "montant": 40500.0,
+    "dept": "05"
+  },
+  "11880225": {
+    "code_commune": "05023",
+    "commune": "Briançon",
+    "source": "titre:\"Briançon\"",
+    "montant": 22500.0,
+    "dept": "05"
+  },
+  "11359273": {
+    "code_commune": "05023",
+    "commune": "Briançon",
+    "source": "benef:\"CC DU BRIANCONNAIS\"",
+    "montant": 19800.0,
+    "dept": "05"
+  },
+  "11841588": {
+    "code_commune": "05046",
+    "commune": "Embrun",
+    "source": "benef:\"CC SERRE-PONCON\"",
+    "montant": 24240.0,
+    "dept": "05"
+  },
+  "11377866": {
+    "code_commune": "05023",
+    "commune": "Briançon",
+    "source": "benef:\"CC DU BRIANCONNAIS\"",
+    "montant": 12000.0,
+    "dept": "05"
+  },
+  "12022362": {
+    "code_commune": "05023",
+    "commune": "Briançon",
+    "source": "benef:\"SMIGIBA\"",
+    "montant": 12000.0,
+    "dept": "05"
+  },
+  "12263465": {
+    "code_commune": "05040",
+    "commune": "Chorges",
+    "source": "titre:\"Chorges\"",
+    "montant": 47500.0,
+    "dept": "05"
+  },
+  "12255626": {
+    "code_commune": "05040",
+    "commune": "Chorges",
+    "source": "titre:\"Chorges\"",
+    "montant": 50000.0,
+    "dept": "05"
+  },
+  "12265149": {
+    "code_commune": "05046",
+    "commune": "Embrun",
+    "source": "benef:\"CC SERRE-PONCON\"",
+    "montant": 19500.0,
+    "dept": "05"
+  },
+  "11790871": {
+    "code_commune": "05046",
+    "commune": "Embrun",
+    "source": "benef:\"CC SERRE-PONCON\"",
+    "montant": 16120.0,
+    "dept": "05"
+  },
+  "11586033": {
+    "code_commune": "04224",
+    "commune": "Vachères",
+    "source": "titre_fix:titre: \"Vachères\"",
+    "montant": 34420.0,
+    "dept": "05"
+  },
+  "11752364": {
+    "code_commune": "05046",
+    "commune": "Embrun",
+    "source": "benef:\"CC SERRE-PONCON\"",
+    "montant": 36390.0,
+    "dept": "05"
+  },
+  "11891579": {
+    "code_commune": "05065",
+    "commune": "Guillestre",
+    "source": "benef:\"SYNDICAT MIXTE DU PNRQ\"",
+    "montant": 12000.0,
+    "dept": "05"
+  },
+  "11908307": {
+    "code_commune": "05046",
+    "commune": "Embrun",
+    "source": "benef:\"SYEP EMBRUNAIS\"",
+    "montant": 238383.0,
+    "dept": "05"
+  },
+  "11414128": {
+    "code_commune": "05046",
+    "commune": "Embrun",
+    "source": "benef:\"SI GUIL-DURANCE\"",
+    "montant": 1122000.0,
+    "dept": "05"
+  },
+  "11813111": {
+    "code_commune": "05046",
+    "commune": "Embrun",
+    "source": "benef:\"CC SERRE-PONCON\"",
+    "montant": 150000.0,
+    "dept": "05"
+  },
+  "11455932": {
+    "code_commune": "06150",
+    "commune": "La Trinité",
+    "source": "titre:\"Trinité\"",
+    "montant": 675000.0,
+    "dept": "06"
+  },
+  "11707874": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "benef:\"METROPOLE NCA\"",
+    "montant": 26666.4,
+    "dept": "06"
+  },
+  "11671858": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "benef:\"METROPOLE NCA\"",
+    "montant": 240534.4,
+    "dept": "06"
+  },
+  "11708312": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "benef:\"METROPOLE NCA\"",
+    "montant": 33600.0,
+    "dept": "06"
+  },
+  "12017329": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "dept_fallback:06",
+    "montant": 100000.0,
+    "dept": "06"
+  },
+  "13495192": {
+    "code_commune": "06114",
+    "commune": "Puget-Théniers",
+    "source": "benef:\"CC ALPES D AZUR\"",
+    "montant": 32567.0,
+    "dept": "06"
+  },
+  "12818143": {
+    "code_commune": "06069",
+    "commune": "Grasse",
+    "source": "benef:\"CA PAYS DE GRASSE\"",
+    "montant": 50505.5,
+    "dept": "06"
+  },
+  "12155121": {
+    "code_commune": "06004",
+    "commune": "Antibes",
+    "source": "benef:\"CA SOPHIA ANTIPOLIS\"",
+    "montant": 55183.0,
+    "dept": "06"
+  },
+  "12016109": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "dept_fallback:06",
+    "montant": 798553.0,
+    "dept": "06"
+  },
+  "11625957": {
+    "code_commune": "06029",
+    "commune": "Cannes",
+    "source": "benef:\"CA DES PAYS DE LERINS\"",
+    "montant": 90008.0,
+    "dept": "06"
+  },
+  "12507625": {
+    "code_commune": "06114",
+    "commune": "Puget-Théniers",
+    "source": "benef:\"CC ALPES D AZUR\"",
+    "montant": 96000.0,
+    "dept": "06"
+  },
+  "12648473": {
+    "code_commune": "06079",
+    "commune": "Mandelieu-la-Napoule",
+    "source": "titre_fix:titre: \"Mandelieu\"",
+    "montant": 51864.5,
+    "dept": "06"
+  },
+  "11830850": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "dept_fallback:06",
+    "montant": 61720.0,
+    "dept": "06"
+  },
+  "14179447": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "dept_fallback:06",
+    "montant": 262400.0,
+    "dept": "06"
+  },
+  "14194550": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "dept_fallback:06",
+    "montant": 880000.0,
+    "dept": "06"
+  },
+  "11326607": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "benef:\"METROPOLE NCA\"",
+    "montant": 1932940.64,
+    "dept": "06"
+  },
+  "11995468": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "dept_fallback:06",
+    "montant": 148000.0,
+    "dept": "06"
+  },
+  "12512203": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "dept_fallback:06",
+    "montant": 1000000.0,
+    "dept": "06"
+  },
+  "11641006": {
+    "code_commune": "06029",
+    "commune": "Cannes",
+    "source": "benef:\"CA DES PAYS DE LERINS\"",
+    "montant": 945000.0,
+    "dept": "06"
+  },
+  "12266304": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "benef:\"SMIAGE MARALPIN\"",
+    "montant": 184236.0,
+    "dept": "06"
+  },
+  "12244410": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "benef:\"SMIAGE MARALPIN\"",
+    "montant": 10090.0,
+    "dept": "06"
+  },
+  "12266746": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "benef:\"SMIAGE MARALPIN\"",
+    "montant": 140503.0,
+    "dept": "06"
+  },
+  "12261967": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "benef:\"SMIAGE MARALPIN\"",
+    "montant": 13872.0,
+    "dept": "06"
+  },
+  "12266580": {
+    "code_commune": "06084",
+    "commune": "Malaussène",
+    "source": "titre:\"Mont Vial\"",
+    "montant": 150000.0,
+    "dept": "06"
+  },
+  "11321744": {
+    "code_commune": "06029",
+    "commune": "Cannes",
+    "source": "titre:\"Cannes\"",
+    "montant": 25436.0,
+    "dept": "06"
+  },
+  "11890823": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "dept_fallback:06",
+    "montant": 1000000.0,
+    "dept": "06"
+  },
+  "11591003": {
+    "code_commune": "06088",
+    "commune": "Nice",
+    "source": "benef:\"METROPOLE NCA\"",
+    "montant": 400000.0,
+    "dept": "06"
+  },
+  "11676334": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"AIX MARSEILLE PROVENCE\"",
+    "montant": 205600.0,
+    "dept": "13"
+  },
+  "11676177": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"AIX MARSEILLE PROVENCE\"",
+    "montant": 64000.0,
+    "dept": "13"
+  },
+  "11706794": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"AIX MARSEILLE PROVENCE\"",
+    "montant": 79200.0,
+    "dept": "13"
+  },
+  "11739798": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"AIX MARSEILLE PROVENCE\"",
+    "montant": 68000.0,
+    "dept": "13"
+  },
+  "13068937": {
+    "code_commune": "13004",
+    "commune": "Arles",
+    "source": "benef:\"ASYMIX SYMADREM\"",
+    "montant": 160000.0,
+    "dept": "13"
+  },
+  "11685986": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"AIX MARSEILLE PROVENCE\"",
+    "montant": 499364.6,
+    "dept": "13"
+  },
+  "11556907": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "dept_fallback:13",
+    "montant": 41680.0,
+    "dept": "13"
+  },
+  "12820138": {
+    "code_commune": "13098",
+    "commune": "Saint-Martin-de-Crau",
+    "source": "titre_fix:titre: \"Vergières\"",
+    "montant": 32000.0,
+    "dept": "13"
+  },
+  "11928835": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"AIX MARSEILLE PROVENCE\"",
+    "montant": 264000.0,
+    "dept": "13"
+  },
+  "13506679": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "dept_fallback:13",
+    "montant": 136000.0,
+    "dept": "13"
+  },
+  "11713931": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"AIX MARSEILLE PROVENCE\"",
+    "montant": 356000.0,
+    "dept": "13"
+  },
+  "12062967": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "dept_fallback:13",
+    "montant": 40251.8,
+    "dept": "13"
+  },
+  "11843231": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"EPAGE HUVEAUNE\"",
+    "montant": 26000.0,
+    "dept": "13"
+  },
+  "11826618": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"SYNDMC EPAGE MENELIK\"",
+    "montant": 15000.0,
+    "dept": "13"
+  },
+  "11811689": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"SYNDMC EPAGE MENELIK\"",
+    "montant": 36000.0,
+    "dept": "13"
+  },
+  "11801139": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"SYNDMC EPAGE MENELIK\"",
+    "montant": 26000.0,
+    "dept": "13"
+  },
+  "11684143": {
+    "code_commune": "13055",
+    "commune": "Marseille",
+    "source": "benef:\"AIX MARSEILLE PROVENCE\"",
+    "montant": 1000000.0,
+    "dept": "13"
+  },
+  "11816998": {
+    "code_commune": "13004",
+    "commune": "Arles",
+    "source": "benef:\"CA ARLES CRAU CAMARGUE\"",
+    "montant": 252133.33,
+    "dept": "13"
+  },
+  "11653741": {
+    "code_commune": "13029",
+    "commune": "Fos-sur-Mer",
+    "source": "titre_fix:titre: \"Fos-sur-Mer\"",
+    "montant": 2000000.0,
+    "dept": "13"
+  },
+  "12011959": {
+    "code_commune": "83023",
+    "commune": "Brignoles",
+    "source": "benef:\"SYNDMC PROVENCE VERTE\"",
+    "montant": 210400.0,
+    "dept": "83"
+  },
+  "13481083": {
+    "code_commune": "83031",
+    "commune": "Collobrières",
+    "source": "benef:\"SYNDMC MASSIF DES MAURES\"",
+    "montant": 64000.0,
+    "dept": "83"
+  },
+  "12109540": {
+    "code_commune": "83050",
+    "commune": "Draguignan",
+    "source": "benef:\"CA DRACENIE\"",
+    "montant": 211362.5,
+    "dept": "83"
+  },
+  "12771535": {
+    "code_commune": "83137",
+    "commune": "Toulon",
+    "source": "benef:\"CONSEIL ARCHITEC URBANISME TOULON\"",
+    "montant": 70019.75,
+    "dept": "83"
+  },
+  "13443300": {
+    "code_commune": "83031",
+    "commune": "Collobrières",
+    "source": "benef:\"SYNDMC MASSIF DES MAURES\"",
+    "montant": 89632.0,
+    "dept": "83"
+  },
+  "12279169": {
+    "code_commune": "83137",
+    "commune": "Toulon",
+    "source": "dept_fallback:83",
+    "montant": 52800.0,
+    "dept": "83"
+  },
+  "12235717": {
+    "code_commune": "83137",
+    "commune": "Toulon",
+    "source": "dept_fallback:83",
+    "montant": 51661.6,
+    "dept": "83"
+  },
+  "12354631": {
+    "code_commune": "83137",
+    "commune": "Toulon",
+    "source": "benef:\"MET TOULON PROVENCE\"",
+    "montant": 240000.0,
+    "dept": "83"
+  },
+  "13310743": {
+    "code_commune": "83137",
+    "commune": "Toulon",
+    "source": "dept_fallback:83",
+    "montant": 91099.16,
+    "dept": "83"
+  },
+  "11501927": {
+    "code_commune": "83050",
+    "commune": "Draguignan",
+    "source": "titre:\"Draguignan\"",
+    "montant": 1600000.0,
+    "dept": "83"
+  },
+  "11737233": {
+    "code_commune": "83137",
+    "commune": "Toulon",
+    "source": "benef:\"MET TOULON PROVENCE\"",
+    "montant": 971721.45,
+    "dept": "83"
+  },
+  "12413424": {
+    "code_commune": "84007",
+    "commune": "Avignon",
+    "source": "benef:\"CA DU GRAND AVIGNON\"",
+    "montant": 131706.0,
+    "dept": "84"
+  },
+  "11966198": {
+    "code_commune": "84007",
+    "commune": "Avignon",
+    "source": "benef:\"CA DU GRAND AVIGNON\"",
+    "montant": 1040583.0,
+    "dept": "84"
+  },
+  "12066954": {
+    "code_commune": "84007",
+    "commune": "Avignon",
+    "source": "benef:\"CA DU GRAND AVIGNON\"",
+    "montant": 19606.38,
+    "dept": "84"
+  },
+  "12967442": {
+    "code_commune": "84003",
+    "commune": "Apt",
+    "source": "titre_fix:titre: \"Luberon\"",
+    "montant": 115000.0,
+    "dept": "84"
+  },
+  "13454254": {
+    "code_commune": "84007",
+    "commune": "Avignon",
+    "source": "benef:\"AGENCE D'URBANISME RHONE AVIGNON\"",
+    "montant": 79751.65,
+    "dept": "84"
+  },
+  "12938885": {
+    "code_commune": "84012",
+    "commune": "Bédoin",
+    "source": "titre_fix:titre: \"Mont-Ventoux\"",
+    "montant": 115000.0,
+    "dept": "84"
+  },
+  "12731165": {
+    "code_commune": "84007",
+    "commune": "Avignon",
+    "source": "dept_fallback:84",
+    "montant": 100016.0,
+    "dept": "84"
+  },
+  "12642122": {
+    "code_commune": "84031",
+    "commune": "Cavaillon",
+    "source": "benef:\"SM AMENAGEMENT VALLEE DE LA DURANCE\"",
+    "montant": 29958.7,
+    "dept": "84"
+  },
+  "11595047": {
+    "code_commune": "84016",
+    "commune": "Bédarrides",
+    "source": "titre_fix:titre: \"Bédarrides\"",
+    "montant": 13600.0,
+    "dept": "84"
+  },
+  "11481857": {
+    "code_commune": "84007",
+    "commune": "Avignon",
+    "source": "dept_fallback:84",
+    "montant": 982286.93,
+    "dept": "84"
+  },
+  "12189226": {
+    "code_commune": "84035",
+    "commune": "Courthézon",
+    "source": "benef:\"CC D' AYGUES-OUVEZE\"",
+    "montant": 129551.1,
+    "dept": "84"
+  },
+  "12110346": {
+    "code_commune": "84003",
+    "commune": "Apt",
+    "source": "benef:\"CC DU PAYS D APT\"",
+    "montant": 117608.4,
+    "dept": "84"
+  },
+  "11367543": {
+    "code_commune": "84080",
+    "commune": "Pernes-les-Fontaines",
+    "source": "benef:\"CA LES SORGUES DU COMTAT\"",
+    "montant": 745319.29,
+    "dept": "84"
+  },
+  "11838488": {
+    "code_commune": "84069",
+    "commune": "L'Isle-sur-la-Sorgue",
+    "source": "benef:\"CC PAYS DES SORGUES\"",
+    "montant": 50187.2,
+    "dept": "84"
+  },
+  "11969687": {
+    "code_commune": "84007",
+    "commune": "Avignon",
+    "source": "benef:\"CA DU GRAND AVIGNON\"",
+    "montant": 150000.0,
+    "dept": "84"
+  },
+  "12495935": {
+    "code_commune": "84137",
+    "commune": "Vaison-la-Romaine",
+    "source": "titre:\"Vaison\"",
+    "montant": 15680.0,
+    "dept": "84"
+  },
+  "12505043": {
+    "code_commune": "84007",
+    "commune": "Avignon",
+    "source": "dept_fallback:84",
+    "montant": 792540.99,
+    "dept": "84"
+  }
+}

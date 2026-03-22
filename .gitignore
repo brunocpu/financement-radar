@@ -1,0 +1,19 @@
+# Données brutes + base DuckDB (trop lourd, régénérable)
+data/
+
+# Python
+__pycache__/
+*.pyc
+
+# Scripts one-shot
+cleanup.py
+diag*.py
+fix_*.py
+patch_*.py
+resolve_*.py
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
