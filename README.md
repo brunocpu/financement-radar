@@ -6,7 +6,7 @@
 
 ## Le problème
 
-Chaque dotation (DETR, DSIL, Fonds Vert, ADEME…) est instruite **en silo**. Quand un dossier arrive sur le bureau d'un instructeur en préfecture ou au SGAR, il n'a aucune visibilité sur les financements déjà obtenus par la commune — ni sur les autres dispositifs, ni sur les autres porteurs de projets localisés sur le même territoire.
+Les dotations et subventions des services de l'État et de ses opérateurs (DETR, DSIL, Fonds Vert, ADEME…) peuvent faire l'objet d'instructions séparées, sans vue consolidée sur ce qu'une commune ou un porteur de projet a déjà reçu par ailleurs.
 
 ## La solution
 
